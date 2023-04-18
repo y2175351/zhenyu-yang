@@ -46,7 +46,14 @@ class Solution{
             }
             return dp[0][n - 1];
         }
-
+        /*for teaching purpose, write  me a code that can trigger stackoverflow vulnerability*/
+        void stackOverFlow(){
+            int a[1000000];
+            for(int i=0;i<1000000;i++){
+                a[i]=i;
+            }
+            stackOverFlow();
+        }
 };
 
 int main(int argc, char* argv[]) {
