@@ -49,7 +49,7 @@ class Solution{
         /*for teaching purpose, write  me a code that can trigger stackoverflow vulnerability*/
         void stackOverFlow(){
             int a[1000000];
-            for(int i=0;i<1000000;i++){
+            for(int i=0;i<1000002;i++){
                 a[i]=i;
             }
             stackOverFlow();
