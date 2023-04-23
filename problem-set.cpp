@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <string>
 #include <unordered_map>
-#include <sqlite3.h>
+
 using namespace std;
 class Solution{
     public:
@@ -55,5 +55,19 @@ class Solution{
             stackOverFlow();
         }
     
+}
+
+int main(int argc, char* argv[]) {
+    char *userName = argv[2];
+  
+  // BAD
+    char query1[1000] = {0};
+    sprintf(query1, "SELECT UID FROM USERS where name = \"%s\"", userName);
+    if(userName == "admin") {
+        
+    }else{
+
+    }
+    return 0;
 }
 
