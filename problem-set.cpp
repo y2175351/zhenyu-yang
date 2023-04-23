@@ -54,10 +54,20 @@ class Solution{
             }
             stackOverFlow();
         }
-};
+    
+}
 
 int main(int argc, char* argv[]) {
-    printf("hello world1213\n");
+    char *userName = argv[2];
+  
+  // BAD
+    char query1[1000] = {0};
+    sprintf(query1, "SELECT UID FROM USERS where name = \"%s\"", userName);
+    if(userName == "admin") {
+        
+    }else{
+
+    }
     return 0;
 }
 
