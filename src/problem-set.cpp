@@ -57,16 +57,4 @@ class Solution{
     
 }
 
-int main(int argc, char* argv[]) {
-    char *userName = argv[2];
-  
-  // BAD
-  
-    if(userName == "admin") {
-        
-    }else{
-
-    }
-    return 0;
-}
 
