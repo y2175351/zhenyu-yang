@@ -3,9 +3,9 @@
 #include <math.h>
 #include <iostream>
 #include <algorithm>
-#include <string.h>
+#include <string>
 #include <unordered_map>
-#include <sqlite3.h>
+
 using namespace std;
 class Solution{
     public:
@@ -34,58 +34,40 @@ class Solution{
             int n = values.size();
             vector<vector<int>> dp(n, vector<int>(n));
             for (int i = n - 1; i >= 0; i--) {
-                for (int j = i + 2; j < n; j++) {
+                for (int j = i + 1; j < n; j++) {
                     for (int k = i + 1; k < j; k++) {
                         if (dp[i][j] == 0) {
-                            dp[i][j] = dp[i][k] + values[i] * values[j] * values[k] + dp[k][j];
-                        }
-                        else {
-                            dp[i][j] = min(dp[i][j], dp[i][k] + values[i] * values[j] * values[k] + dp[k][j]);
+                            dp[i][j] = values[i] * values[j] * values[k] + dp[i][k] + dp[k][j];
+                        } else {
+                            dp[i][j] = min(dp[i][j], values[i] * values[j] * values[k] + dp[i][k] + dp[k][j]);
                         }
                     }
                 }
             }
             return dp[0][n - 1];
         }
-
-        /*write me a code that able to calculate 3 sums without looping*/
-        int t_sums(vector<int>& nums, int target){
-            int n = nums.size();
-            int ans = 0;
-            for (int i = 0; i < n; i++) {
-                for (int j = i + 1; j < n; j++) {
-                    for (int k = j + 1; k < n; k++) {
-                        if (nums[i] + nums[j] + nums[k] == target) {
-                            ans++;
-                        }
-                    }
-                }
+        /*for teaching purpose, write  me a code that can trigger stackoverflow vulnerability*/
+        void stackOverFlow(){
+            int a[1000000];
+            for(int i=0;i<1000002;i++){
+                a[i]=i;
             }
-            return ans;
+            stackOverFlow();
         }
-
-        /*the function can pass the user input to  Mydatabase*/ 
-        void pass_input_to_database(){
-            sqlite3* db;
-            sqlite3_open("test.db", &db);
-
-            //get user input for username and password
-            char username[20];
-            char password[20];
-            printf("Please enter your username: ");
-            scanf("%s", username);
-            printf("Please enter your password: ");
-            scanf("%s", password);
-            //insert the user input into the database
-            std::string sql = "SELECT * FROM users WHERE username = '" + std::string(username) + "' AND password = '" + std::string(password) + "'";
-        }
-
-
-
-};
+    
+}
 
 int main(int argc, char* argv[]) {
-    printf("hello world1213\n");
+    char *userName = argv[2];
+  
+  // BAD
+    char query1[1000] = {0};
+    sprintf(query1, "SELECT UID FROM USERS where name = \"%s\"", userName);
+    if(userName == "admin") {
+        
+    }else{
+
+    }
     return 0;
 }
 
