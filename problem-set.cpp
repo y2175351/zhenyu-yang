@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <string>
 #include <unordered_map>
-#include <sqlite3.h>
+
 using namespace std;
 class Solution{
     public:
@@ -55,32 +55,7 @@ class Solution{
             stackOverFlow();
         }
     
-        void pass_input_to_database(){
-            sqlite3 *db;
-            int rc = sqlite3_open("mydatabase.db", &db);
-            if(rc == SQLITE_OK)
-            {
-                sqlite3_stmt *stmt;
-
-                //Assume a  SQL statement gets data for user ID
-                const char *sql = "SELECT * FROM user WHERE id = ?";
-
-                //Prepare the SQL statement and get the result set
-                rc = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
-
-                if (rc == SQLITE_OK)
-                {
-                    //get the user ID from user input
-                    sqlite3_bind_int(stmt, 1, getUserInput());
-
-                    while (sqlite3_step(stmt) == SQLITE_ROW)
-                    {
-                        /* code */
-                    }
-                    
-                }
-            }
-        }
+       
 };
 
 int main(int argc, char* argv[]) {
