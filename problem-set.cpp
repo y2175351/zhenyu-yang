@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <string>
 #include <unordered_map>
-
+#include <sqlite3.h>
 using namespace std;
 class Solution{
     public:
